@@ -13,5 +13,33 @@ Since its launch  [Scholexplorer](https://scholexplorer.openaire.eu/) has increa
 
 The newly adopted dump format organizes the data into two distinct folders: __Entities__ and __Relationships__.
 
+# Requirements
+To run this script, you need to install `pyspark` using the command:
+
+```bash
+pip install pyspark
+```
 
 
+# How to convert Scholexplorer Dump into Scholix Format
+
+In order to convert the dump into Scholix metadata format, you have to launch `main.py` with the following arguments:
+
+## Arguments
+
+1. `dump_path` (required): Path to the dump file containing the relationships and entities folder.
+2. `scholix_path` (required): Path to the Scholix generated dump.
+3. `--datasourceFilter` (optional): Filter by datasource.
+4. `--relationFilter` (optional): Filter by relation.
+5. `--sourcePidFilter` (optional): Filter by source PID.
+6. `--targetPidFilter` (optional): Filter by target PID.
+
+## Usage
+
+The following command
+
+```
+python main.py --datasourceFilter zenodo --relationFilter haspart --sourcePidFilter arxiv  --targetPidFilter doi dump scholix_dump
+```
+
+allows converting the dump into the Scholix format, filtering only relationships originating from **Zenodo** with "**HasPart**" semantics, where the source PID type is "**arxiv**" and the target PID type is "**doi**".
